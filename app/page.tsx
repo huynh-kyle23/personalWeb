@@ -5,6 +5,7 @@ import ResearchSection from "@/components/research_content";
 import DotPattern from "@/components/ui/dotPattern";  // Import the DotPattern component
 import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
+import { AnimatedListDemo } from "@/components/animated_list_component";
 
 export default function Home() {
   return (
@@ -43,6 +44,9 @@ export default function Home() {
       {/* Research Section */}
       <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
         <ResearchSection />
+      </section>
+      <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
+        <AnimatedListDemo/>
       </section>
       <DockDemo />
     </main>
