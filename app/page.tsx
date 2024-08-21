@@ -7,6 +7,7 @@ import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
 import { AnimatedListDemo } from "@/components/animated_list_component";
 import { HyperTextDemo } from "@/components/project_text";
+import { CardStackDemo } from "@/components/card_stack_component";
 
 export default function Home() {
   return (
@@ -47,12 +48,19 @@ export default function Home() {
         <ResearchSection />
       </section>
 
-      {/* HyperText and AnimatedList */}
-          <HyperTextDemo/> {/* Ensure HyperTextDemo is above */}
-          <AnimatedListDemo className="relative z-10" /> {/* Positioned below HyperTextDemo */}
+      {/* HyperText and AnimatedList with CardStack */}
+      <section className="relative z-10 w-full min-h-screen flex flex-col items-center p-8">
+        <div className="w-full">
+          <HyperTextDemo />
+        </div>
+        <div className="w-full mt-8">
+          <AnimatedListDemo className="w-full" /> {/* Make sure it spans the full width */}
+        </div>
+        <div className="w-full mt-8 flex justify-center">
+        </div>
+      </section>
 
       <DockDemo />
     </main>
   );
 }
-
