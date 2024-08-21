@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/typewriter_component.js", "components/wordFadein.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/typewriter_component.js", "components/wordFadein.js", "components/blurInContent.js"],
   "exclude": ["node_modules"]
 }

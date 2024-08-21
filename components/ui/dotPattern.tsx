@@ -1,18 +1,18 @@
 import { useId } from "react";
-
 import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
-  width?: any;
-  height?: any;
-  x?: any;
-  y?: any;
-  cx?: any;
-  cy?: any;
-  cr?: any;
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  cx?: number;
+  cy?: number;
+  cr?: number;
   className?: string;
-  [key: string]: any;
+  // Allow only standard SVG attributes or known props
 }
+
 export function DotPattern({
   width = 16,
   height = 16,
@@ -22,7 +22,7 @@ export function DotPattern({
   cy = 1,
   cr = 1,
   className,
-  ...props
+  ...props // This will gather any other non-standard props
 }: DotPatternProps) {
   const id = useId();
 
@@ -31,9 +31,9 @@ export function DotPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80",
-        className,
+        className
       )}
-      {...props}
+      // Only pass standard SVG attributes or known props here
     >
       <defs>
         <pattern
