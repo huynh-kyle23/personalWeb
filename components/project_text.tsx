@@ -2,9 +2,11 @@ import HyperText from "@/components/magicui/hyper-text";
 
 export function HyperTextDemo() {
   return (
-    <HyperText
-      className="text-4xl font-bold text-black dark:text-white"
-      text="Hyper Text"
-    />
+    <div className="flex items-center justify-center h-full">
+      <HyperText
+        className="text-4xl font-bold text-black dark:text-black"
+        text="Projects"
+      />
+    </div>
   );
 }

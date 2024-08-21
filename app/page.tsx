@@ -6,6 +6,7 @@ import DotPattern from "@/components/ui/dotPattern";  // Import the DotPattern c
 import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
 import { AnimatedListDemo } from "@/components/animated_list_component";
+import { HyperTextDemo } from "@/components/project_text";
 
 export default function Home() {
   return (
@@ -45,10 +46,13 @@ export default function Home() {
       <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
         <ResearchSection />
       </section>
-      <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
-        <AnimatedListDemo/>
-      </section>
+
+      {/* HyperText and AnimatedList */}
+          <HyperTextDemo/> {/* Ensure HyperTextDemo is above */}
+          <AnimatedListDemo className="relative z-10" /> {/* Positioned below HyperTextDemo */}
+
       <DockDemo />
     </main>
   );
 }
+
