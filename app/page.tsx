@@ -7,7 +7,6 @@ import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
 import { AnimatedListDemo } from "@/components/animated_list_component";
 import { HyperTextDemo } from "@/components/project_text";
-import { CardStackDemo } from "@/components/card_stack_component";
 
 export default function Home() {
   return (
