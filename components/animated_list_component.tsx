@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatedList } from "../components/ui/animated_list";
 import { CardStackDemo } from "./card_stack_component";
+import DotPattern from "./ui/dotPattern";
 
 interface Item {
   name: string;
@@ -14,39 +15,39 @@ interface Item {
 
 let notifications = [
   {
-    name: "PetrPages                        ",
-    description: "Magic UI",
-    time: "15m ago",
-    icon: "💸",
+    name: "PetrPages                                                      ",
+    description: "React, Python, SQL",
+    time: "",
+    icon: "💬",
     color: "#00C9A7",
   },
   {
-    name: "JotGenius",
-    description: "Magic UI",
-    time: "10m ago",
-    icon: "👤",
+    name: "JotGenius                                                      ",
+    description: "Next, Python, pocketBase",
+    time: "",
+    icon: "🧠",
     color: "#FFB800",
   },
   {
-    name: "Yappr",
-    description: "Magic UI",
-    time: "5m ago",
-    icon: "💬",
+    name: "Yappr                                                          ",
+    description: "Python, OpenAI",
+    time: "",
+    icon: "🗣️",
     color: "#FF3D71",
   },
   {
-    name: "Spesis Analysis",
-    description: "Magic UI",
-    time: "2m ago",
-    icon: "🗞️",
-    color: "#1E86FF",
+    name: "Spesis Analysis                                                 ",
+    description: "Jupyter, matplotlib, pandas, SQL",
+    time: "",
+    icon: "🦠",
+    color: "#6A5ACD",
   },
   {
-    name: "Dublin Classification",
-    description: "Magic UI",
-    time: "2m ago",
-    icon: "🗞️",
-    color: "#1E86FF",
+    name: "Dublin Classification                                            ",
+    description: "matplotlib, plotly, pandas, scikitlearn",
+    time: "",
+    icon: "🏡",
+    color: "#8A2BE2",
   },
 ];
 
@@ -85,13 +86,13 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 
 export function AnimatedListDemo({ className }: { className?: string }) {
   return (
-    <div
-      className={cn(
-        "relative flex h-[500px] w-full p-6 overflow-hidden rounded-lg border bg-background md:shadow-xl",
-        className
-      )}
-    >
-      <div className="flex flex-row w-full space-x-4">
+    <div className="relative flex h-[500px] w-full p-6 overflow-hidden rounded-lg bg-white">
+      <DotPattern
+        width={40}
+        height={40}
+        className="absolute inset-0 z-0"  // Ensure the dot pattern is behind content
+      />
+      <div className="relative flex flex-row w-full space-x-4 z-10">
         {/* Animated List */}
         <div className="flex-1 max-w-full">
           <AnimatedList>
@@ -106,4 +107,3 @@ export function AnimatedListDemo({ className }: { className?: string }) {
     </div>
   );
 }
-
