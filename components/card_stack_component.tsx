@@ -1,9 +1,10 @@
 "use client";
 import { CardStack } from "../components/ui/cardStack";
 import { cn } from "@/lib/utils";
+
 export function CardStackDemo() {
   return (
-    <div className="h-[40rem] flex items-center justify-center w-full">
+    <div className="h-[40rem] flex items-center justify-center w-full -mt-8"> {/* Adjust the margin-top here */}
       <CardStack items={CARDS} />
     </div>
   );
@@ -32,40 +33,63 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Manu Arora",
-    designation: "Senior Software Engineer",
+    name: "PetrPages",
+    designation: "UCI Hackathon",
     content: (
       <p>
-        These cards are amazing, <Highlight>I want to use them</Highlight> in my
-        project. Framer motion is a godsend ngl tbh fam 🙏
+        A social media web application that allows you to connect
+        to other students at your school for general hangouts and
+        productive study groups!
       </p>
     ),
   },
   {
-    id: 1,
-    name: "Elon Musk",
-    designation: "Senior Shitposter",
+    id: 4,
+    name: "Jot Genius",
+    designation: "LA Hacks",
     content: (
       <p>
-        I dont like this Twitter thing,{" "}
-        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
-        would like to call it <Highlight>X.com</Highlight> so that it can easily
-        be confused with adult sites.
+        A new way to study and take notes. Jot Genius is a web application
+        designed to embrace learning through playful games. Challenge youself
+        on taking notes to an educational video and see how you can improve!
+      </p>
+    ),
+  },
+  {
+    id: 3, //4
+    name: "Yappr",
+    designation: "Hack @ UCI",
+    content: (
+      <p>
+        An AI chatbot on the terminal that can listen to and respond back to you
+        in real time. Your everyday assistant all in the terminal to help you
+        with your daily tasks!
       </p>
     ),
   },
   {
     id: 2,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
+    name: "Sepsis Analysis",
+    designation: "Datathon",
     content: (
       <p>
-        The first rule of
-        <Highlight>Fight Club</Highlight> is that you do not talk about fight
-        club. The second rule of
-        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
-        club.
+        An analysis on the incidence and prevalence of sepsis. Including
+        determinate factos that have strong correlation to the prevalence of sepsis
+        as well as interesting discoveries on what may connect an individual to sepsis
+        as well. Go through the life cycle of data through the lens of public health!
       </p>
-    ),
+    )
   },
+  {
+    id: 1, //2
+    name: "Dublin Classification",
+    designation: "Datathon",
+    content: (
+      <p>
+        An analysis on the AirBNB housing market in Dublin Ireland.
+        Explore and discover the unqieu and interesting trends that make
+        a more attractive house and an excellent host on AirBNB through data!
+      </p>
+    )
+  }
 ];

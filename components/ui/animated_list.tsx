@@ -44,29 +44,31 @@ export const AnimatedList = React.memo(
 AnimatedList.displayName = "AnimatedList";
 
 export function AnimatedListItem({ children }: { children: React.ReactNode }) {
-    const animations = {
-      initial: { scale: 0.8, opacity: 0 },
-      animate: { scale: 1, opacity: 1, originY: 0 },
-      exit: { scale: 0.8, opacity: 0 },
-      transition: { type: "spring", stiffness: 300, damping: 30 },
-    };
-  
-    return (
-      <motion.div
-        {...animations}
-        layout
-        className="bg-white shadow-lg rounded-lg p-4 max-w-md w-full" // Full width within its container
-        style={{
-          width: '90%', // Adjust width to be a percentage of its container
-          marginLeft: '0', // Pushes the item to the left
-          marginRight: 'auto', // Ensures no space on the right
-          position: 'relative', // Allows for positioning adjustments
-          right: '0', // Ensures it aligns to the left
-        }}
-      >
-        {children}
-      </motion.div>
-    );
-  }
+  const animations = {
+    initial: { scale: 0.8, opacity: 0 },
+    animate: { scale: 1, opacity: 1, originY: 0 },
+    exit: { scale: 0.8, opacity: 0 },
+    transition: { type: "spring", stiffness: 300, damping: 30 },
+  };
+
+  return (
+    <motion.div
+      {...animations}
+      layout
+      className="bg-white shadow-lg rounded-lg p-4 max-w-md w-full text-black" // Added 'text-black' class
+      style={{
+        width: '90%', // Adjust width to be a percentage of its container
+        marginLeft: '0', // Pushes the item to the left
+        marginRight: 'auto', // Ensures no space on the right
+        position: 'relative', // Allows for positioning adjustments
+        right: '0', // Ensures it aligns to the left
+        color: 'black', // Ensures the text color is black
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
   
   
