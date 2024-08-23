@@ -1,8 +1,9 @@
 "use client";
 
-import React, { PropsWithChildren, useRef } from "react";
+import React, { useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
@@ -72,7 +73,9 @@ export interface DockIconProps {
   mouseX?: any;
   className?: string;
   children?: React.ReactNode;
-  props?: PropsWithChildren;
+  href?: string; // Add href prop
+  target?: string; // Add target prop
+  rel?: string; // Add rel prop
 }
 
 const DockIcon = ({
@@ -82,6 +85,9 @@ const DockIcon = ({
   mouseX,
   className,
   children,
+  href,
+  target,
+  rel,
   ...props
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -104,6 +110,12 @@ const DockIcon = ({
     damping: 12,
   });
 
+  const handleClick = () => {
+    if (href) {
+      window.open(href, target, rel); // Open in a new tab or window
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -112,6 +124,7 @@ const DockIcon = ({
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         className,
       )}
+      onClick={handleClick} // Attach click handler
       {...props}
     >
       {children}

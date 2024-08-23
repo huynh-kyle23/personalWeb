@@ -7,15 +7,16 @@ import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
 import { AnimatedListDemo } from "@/components/animated_list_component";
 import { HyperTextDemo } from "@/components/project_text";
+import { BlurFadeDemo } from "@/components/blurFadeComponent";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-gray-100"> {/* Full viewport height for main */}
+    <main className="relative min-h-screen bg-gray-100">
       {/* Background pattern */}
       <DotPattern
         width={40}
         height={40}
-        className="absolute inset-0 z-0"  // Ensure background is behind content
+        className="absolute inset-0 z-0"
       />
 
       {/* Container for text and image */}
@@ -23,7 +24,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12 w-full max-w-7xl mx-auto">
           <div className="flex-1 flex flex-col items-center justify-center">
             {/* Word Fade In */}
-            <WordFadeInDemo className="text-5xl text-center text-black mb-4" /> {/* Add text-black class and margin-bottom */}
+            <WordFadeInDemo className="text-5xl text-center text-black mb-4" />
             {/* Blur In */}
             <BlurInDemo />
           </div>
@@ -35,11 +36,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Typewriter effect */}
-      <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
-        <div className="flex justify-center">
+      {/* Typewriter effect with BlurFadeDemo around it */}
+      <section className="relative z-10 w-full min-h-screen flex flex-col items-center p-8">
+        {/* Adding some space between TypewriterEffectDemo and BlurFadeDemo */}
+        <div className="relative mb-8">
           <TypewriterEffectDemo />
         </div>
+        <BlurFadeDemo />
       </section>
 
       {/* Research Section */}
@@ -53,7 +56,7 @@ export default function Home() {
           <HyperTextDemo />
         </div>
         <div className="w-full mt-8">
-          <AnimatedListDemo className="w-full" /> {/* Make sure it spans the full width */}
+          <AnimatedListDemo className="w-full" />
         </div>
         <div className="w-full mt-8 flex justify-center">
         </div>

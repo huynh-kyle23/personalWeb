@@ -8,16 +8,16 @@ export function DockDemo() {
   return (
     <div className="relative">
       <Dock direction="middle">
-        <DockIcon>
+        <DockIcon href="https://github.com/huynh-kyle23" target="_blank" rel="noopener noreferrer"  size={24}>
           <Icons.gitHub className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon href="https://www.linkedin.com/in/kyle-huynh-093b8624b/" size={24}>
           <Icons.googleDrive className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon href="mailto:huynhkyle23@gmail.com?subject=Subject%20Here&body=Body%20text%20here" size={24}>
           <Icons.notion className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon href="https://drive.google.com/file/d/1BWfD5vpdRZy31fF2xtL_F3C_YrSLBLld/view?usp=sharing" size={24}>
           <Icons.whatsapp className="size-6" />
         </DockIcon>
       </Dock>
