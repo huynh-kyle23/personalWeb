@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { WordFadeInDemo } from "../components/wordFadein";
 import { TypewriterEffectDemo } from "@/components/typewriter_component";
@@ -9,7 +10,7 @@ import { AnimatedListDemo } from "@/components/animated_list_component";
 import { HyperTextDemo } from "@/components/project_text";
 import { BlurFadeDemo } from "@/components/blurFadeComponent";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="relative min-h-screen bg-gray-100">
       {/* Background pattern */}
@@ -46,8 +47,8 @@ export default function Home() {
       </section>
 
       {/* Research Section */}
-      <section className="relative z-10 w-full min-h-screen flex items-center justify-center p-8">
-        <ResearchSection />
+      <section className="relative z-5 w-full min-h-screen flex items-center justify-center p-8">
+        <ResearchSection className="relative z-[5]" />
       </section>
 
       {/* HyperText and AnimatedList with CardStack */}
@@ -66,3 +67,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default Home;

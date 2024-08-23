@@ -1,6 +1,5 @@
-"use client";
 import React from "react";
-import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards"
+import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 const posts = [
     {
@@ -41,9 +40,9 @@ const transformedPosts = posts.map(post => ({
     title: post.title,
 }));
 
-const ResearchSection = () => {
+const ResearchSection = ({ className = '' }) => {
     return (
-        <div className="bg-gray-100 min-h-screen py-24 sm:py-32 w-full"> {/* Match the background color */}
+        <div className={`bg-gray-100 min-h-screen py-24 sm:py-32 w-full z-[1000]${className}`}>
             <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex items-center justify-between">
                 <div className="max-w-2xl lg:w-2/3">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Research & Experience</h2>
