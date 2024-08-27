@@ -8,7 +8,8 @@ import { DockDemo } from "../components/dock_component";
 import BlurInDemo from "../components/blurInContent";
 import { AnimatedListDemo } from "@/components/animated_list_component";
 import { HyperTextDemo } from "@/components/project_text";
-import { BlurFadeDemo } from "@/components/blurFadeComponent";
+import { BlurFadeDemo1 } from "@/components/blurFadeComponent";
+import { BlurFadeDemo2 } from "@/components/blurFadeComponent2";
 
 const Home = () => {
   return (
@@ -31,7 +32,7 @@ const Home = () => {
           </div>
           <img
             alt="Portfolio Screenshot"
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            src="/profile.jpg"
             className="w-full max-w-[24rem] h-auto rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[30rem]"
           />
         </div>
@@ -40,10 +41,11 @@ const Home = () => {
       {/* Typewriter effect with BlurFadeDemo around it */}
       <section className="relative z-10 w-full min-h-screen flex flex-col items-center p-8">
         {/* Adding some space between TypewriterEffectDemo and BlurFadeDemo */}
+        <BlurFadeDemo2 />
         <div className="relative mb-8">
           <TypewriterEffectDemo />
         </div>
-        <BlurFadeDemo />
+        <BlurFadeDemo1 />
       </section>
 
       {/* Research Section */}

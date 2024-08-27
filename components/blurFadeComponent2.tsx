@@ -6,29 +6,29 @@ import BlurFade from "../components/ui/blurfade";
 
 const cards = [
   {
-    description: "Made w/ Tableau & Spotify API",
-    title: "My Top Played Genres",
-    src: "/GenreChart.png",
+    description: "Made w/ Plotly",
+    title: "My Mbti Compatability",
+    src: "/mbtiGraph.jpg",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
   },
   {
-    description: "Made w/ Tableau & Github API",
-    title: "My Recent Commits",
-    src: "/GitChart.png",
+    description: "Made w/ Plotly",
+    title: "My Favorite Hobbies",
+    src: "/HobbiesGraph.jpg",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
   },
   {
     description: "Made w/ Tableau",
-    title: "My Top Movies",
-    src: "/MovieChart.png",
+    title: "My Purchasing History",
+    src: "/PurchaseHistory.png",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
   },
 ];
 
-export function BlurFadeDemo1() {
+export function BlurFadeDemo2() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );

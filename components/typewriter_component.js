@@ -11,7 +11,7 @@ export function TypewriterEffectDemo() {
     { text: "my:"}
   ];
 
-  const loopWords = ["interests!", "hobbies!.", "inspirations!",];
+  const loopWords = ["personality!", "hobbies!", "purchasing habits!", "music taste!", "git commits!", "movie taste!"];
 
   return (
     <div className="flex flex-col items-center justify-center h-[40rem] ">

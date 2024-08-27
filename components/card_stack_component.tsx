@@ -49,9 +49,9 @@ const CARDS = [
     designation: "LA Hacks",
     content: (
       <p>
-        A new way to study and take notes. Jot Genius is a web application
+        A new way to study and take notes! Jot Genius is a web application
         designed to embrace learning through playful games. Challenge youself
-        on taking notes to an educational video and see how you can improve!
+        on taking notes to  educational videos and see how you can improve!
       </p>
     ),
   },
@@ -74,7 +74,7 @@ const CARDS = [
     content: (
       <p>
         An analysis on the incidence and prevalence of sepsis. Including
-        determinate factos that have strong correlation to the prevalence of sepsis
+        determinate factors that have strong correlation to the prevalence of sepsis
         as well as interesting discoveries on what may connect an individual to sepsis
         as well. Go through the life cycle of data through the lens of public health!
       </p>
@@ -87,7 +87,7 @@ const CARDS = [
     content: (
       <p>
         An analysis on the AirBNB housing market in Dublin Ireland.
-        Explore and discover the unqieu and interesting trends that make
+        Explore and discover the unique and interesting trends that make
         a more attractive house and an excellent host on AirBNB through data!
       </p>
     )

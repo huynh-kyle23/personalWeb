@@ -36,7 +36,7 @@ let notifications = [
     color: "#FF3D71",
   },
   {
-    name: "Spesis Analysis                                                 ",
+    name: "Sepsis Analysis                                                 ",
     description: "Jupyter, matplotlib, pandas, SQL",
     time: "",
     icon: "🦠",
