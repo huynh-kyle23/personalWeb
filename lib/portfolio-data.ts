@@ -8,7 +8,7 @@ export type WindowId =
 export const PROFILE = {
   name: "Kyle Huynh",
   shortName: "Kyle",
-  title: "Data Science · UC Irvine",
+  title: "MSCS · Georgia Tech",
   location: "Irvine / Torrance, CA",
   phone: "+1 (424) 352-9782",
   email: "huynhkyle23@gmail.com",
@@ -21,7 +21,7 @@ export const PROFILE = {
     gpa: "3.9 / 4.0",
     graduation: "June 2026",
   },
-  bio: "UC Irvine Data Science student (GPA 3.9) graduating June 2026. I build ETL pipelines, analytics systems, and full-stack data products — most recently as a Data Engineering Intern at Pacific Life. Explore this desktop for projects, experience, and ways to get in touch.",
+  bio: "Currently pursuing a Masters of Science in Computer Science at Georgia Institute of Technology. My core competencies include data visualization, ETL processes, and proficiency in tools such as Python, SQL, and Power BI, which I have applied in academic and professional settings to drive impactful projects. My recent internships at Pacific Life, the California Department of Public Health, and UCI Health have honed my data engineering skills, including designing ETL pipelines, automating workflows, and building insightful visualizations. I am passionate about connecting people and empowering teams to solve complex challenges collaboratively. My goal is to leverage my technical skills and community-building expertise to foster innovation and drive meaningful impact in data-driven environments.",
   photo: "/profile.jpg",
   skills: {
     languages:
@@ -33,12 +33,25 @@ export const PROFILE = {
   },
 };
 
+export type ProjectImageSection = {
+  title: string;
+  /** Shown under the title — e.g. PCA projection note */
+  description?: string;
+  images: string[];
+};
+
 export type ProjectItem = {
   id: string;
   name: string;
   event: string;
   stack: string;
   bullets: string[];
+  /** Live demo / deployed site */
+  url?: string;
+  /** Screenshots under /public (e.g. /projects/foo.png) */
+  images?: string[];
+  /** Labeled galleries (e.g. latent space by dimension) */
+  imageSections?: ProjectImageSection[];
 };
 
 /** Consolidated from KyleHuynhResumeDS / DE / SWE. */
@@ -48,6 +61,8 @@ export const PROJECTS: ProjectItem[] = [
     name: "New Tools Radar",
     event: "Full-stack / Data Pipeline",
     stack: "Python, Airflow, dbt, Docker, PostgreSQL/Supabase, TypeScript",
+    url: "https://new-tech-tool-rank-uldh.vercel.app/",
+    images: ["/projects/new-tools-radar-1.png"],
     bullets: [
       "Built a full-stack application with a Python backend (Apache Airflow, dbt, Docker, PostgreSQL/Supabase) and a TypeScript/HTML frontend to ingest, process, and display data on emerging developer tools from multiple APIs.",
       "Designed a modular, layered backend architecture (raw → staging → marts) following software design best practices, processing 1,000+ records daily through fault-tolerant, quality-checked workflows.",
@@ -58,8 +73,9 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "cotality",
     name: "Cotality Propensity to List for Rent and For Sale",
-    event: "Analytics / ML",
+    event: "Data Science Capstone 2026 · Cotality",
     stack: "BigQuery, LightGBM, ELT, LLMs",
+    images: ["/projects/cotality-poster.png"],
     bullets: [
       "Built an ELT pipeline using data from publicly available housing APIs and stored them in BigQuery tables.",
       "Performed feature engineering and built two LightGBM analytical models to predict propensity to list for rent and sale, achieving AUC-ROC of 0.8576 and 0.8106 — exceeding client benchmarks by 0.20 and 0.09 respectively.",
@@ -71,10 +87,31 @@ export const PROJECTS: ProjectItem[] = [
     name: "Yelp Recommender System (Variational Autoencoder)",
     event: "Machine Learning",
     stack: "PyTorch, pandas, feature engineering",
+    imageSections: [
+      {
+        title: "Latent space — 300 dimensions",
+        description:
+          "Visualized with Principal Component Analysis (PCA) to project the high-dimensional latent vectors onto 2 axes (PC1 and PC2). Points colored by log(num_reviews).",
+        images: ["/projects/yelp-vae-latent-300.png"],
+      },
+      {
+        title: "Latent space — 150 dimensions",
+        description:
+          "Visualized with Principal Component Analysis (PCA) to project the high-dimensional latent vectors onto 2 axes (PC1 and PC2). Points colored by log(num_reviews).",
+        images: ["/projects/yelp-vae-latent-150.png"],
+      },
+      {
+        title: "Latent space — 80 dimensions",
+        description:
+          "Visualized with Principal Component Analysis (PCA) to project the high-dimensional latent vectors onto 2 axes (PC1 and PC2). Points colored by log(num_reviews).",
+        images: ["/projects/yelp-vae-latent-80.png"],
+      },
+    ],
     bullets: [
       "Designed a Variational Autoencoder (VAE) using PyTorch on Yelp data to generate recommendations.",
       "Performed data preprocessing and feature engineering with pandas, encoding implicit user behavior patterns and item metadata into structured inputs for generative model training.",
       "Evaluated model performance via reconstruction loss and latent space analysis, demonstrating the model’s ability to capture diverse user preference distributions for downstream recommendation tasks.",
+      "Compared 300-, 150-, and 80-dimensional latent spaces by projecting each onto 2 axes (PC1 and PC2) with PCA, colored by log(num_reviews), to inspect clustering and preference structure.",
     ],
   },
   {
@@ -82,6 +119,8 @@ export const PROJECTS: ProjectItem[] = [
     name: "Sepsis: A Case Study",
     event: "UCI Embark Datathon",
     stack: "Python, logistic regression, SQL, Tableau, R, Jupyter",
+    url: "https://devpost.com/software/sepsis-a-case-study",
+    images: ["/projects/sepsis-page.png"],
     bullets: [
       "Built a machine learning pipeline leveraging data mining techniques to predict sepsis using logistic regression, integrating data preprocessing, feature engineering, and model evaluation.",
       "Achieved 90% accuracy and recognized for best use of data at the UCI Embark Datathon.",
@@ -92,6 +131,13 @@ export const PROJECTS: ProjectItem[] = [
     name: "PetrPages",
     event: "UCI Hackathon",
     stack: "React, Python, FastAPI, SQLite",
+    url: "https://devpost.com/software/petrpage",
+    images: [
+      "/projects/petrpages-1.png",
+      "/projects/petrpages-2.png",
+      "/projects/petrpages-3.png",
+      "/projects/petrpages-4.png",
+    ],
     bullets: [
       "Developed SQL tables and sent queried data to the frontend using Python and sqlite3.",
       "Built the frontend in React and used FastAPI endpoints for page search and connecting login to each user’s page.",
@@ -103,6 +149,8 @@ export const PROJECTS: ProjectItem[] = [
     name: "JotGenius",
     event: "LA Hacks",
     stack: "Next.js, Tailwind, Flask, Gemini API",
+    url: "https://devpost.com/software/jotgenius",
+    images: ["/projects/jotgenius-page.png", "/projects/jotgenius-2.png"],
     bullets: [
       "Website app that gamifies note-taking and scores notes using Google Gemini AI.",
       "Frontend built with Tailwind CSS and Next.js; backend and API calls in Python with Flask and the Gemini API.",
@@ -121,8 +169,14 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "dublin",
     name: "Dublin Housing Classification",
-    event: "Datathon",
+    event: "Atlantis Datathon",
     stack: "pandas, matplotlib, Plotly, scikit-learn",
+    url: "https://devpost.com/software/d-3-dublin-s-demand-supply-decoder",
+    images: [
+      "/projects/dublin-1.png",
+      "/projects/dublin-2.png",
+      "/projects/dublin-3.png",
+    ],
     bullets: [
       "Classification project predicting whether a Dublin Airbnb listing would be booked.",
       "Data wrangling in Jupyter with pandas, matplotlib, seaborn, Plotly, and scikit-learn.",

@@ -23,32 +23,48 @@ type WindowState = {
   zIndex: number;
 };
 
-const DEFAULT_SIZES: Record<WindowId, { w: number; h: number }> = {
-  about: { w: 560, h: 400 },
-  projects: { w: 620, h: 420 },
-  research: { w: 580, h: 440 },
-  contact: { w: 520, h: 420 },
-  recycle: { w: 420, h: 320 },
-};
+const TASKBAR_H = 48;
+const WINDOW_IDS: WindowId[] = [
+  "about",
+  "projects",
+  "research",
+  "contact",
+  "recycle",
+];
 
-const DEFAULT_POSITIONS: Record<WindowId, { x: number; y: number }> = {
-  about: { x: 48, y: 36 },
-  projects: { x: 76, y: 64 },
-  research: { x: 104, y: 92 },
-  contact: { x: 132, y: 60 },
-  recycle: { x: 160, y: 88 },
-};
+/** ~65% width / ~78% height of viewport (recycle a bit smaller). */
+function defaultSizeFor(id: WindowId): { w: number; h: number } {
+  const vw = typeof window !== "undefined" ? window.innerWidth : 1440;
+  const vh =
+    typeof window !== "undefined" ? window.innerHeight - TASKBAR_H : 820;
+  const wRatio = id === "recycle" ? 0.5 : 0.65;
+  const hRatio = id === "recycle" ? 0.55 : 0.78;
+  return {
+    w: Math.round(Math.min(vw - 32, Math.max(560, vw * wRatio))),
+    h: Math.round(Math.min(vh - 24, Math.max(480, vh * hRatio))),
+  };
+}
+
+function defaultPositionFor(
+  id: WindowId,
+  size: { w: number; h: number }
+): { x: number; y: number } {
+  const vw = typeof window !== "undefined" ? window.innerWidth : 1440;
+  const vh =
+    typeof window !== "undefined" ? window.innerHeight - TASKBAR_H : 820;
+  const index = WINDOW_IDS.indexOf(id);
+  const stagger = (index >= 0 ? index : 0) * 28;
+  const x = Math.max(16, Math.round((vw - size.w) / 2) + stagger - 56);
+  const y = Math.max(16, Math.round((vh - size.h) / 2) + stagger - 40);
+  return {
+    x: Math.min(x, Math.max(16, vw - size.w - 16)),
+    y: Math.min(y, Math.max(16, vh - size.h - 16)),
+  };
+}
 
 function createInitialWindows(): Record<WindowId, WindowState> {
-  const ids: WindowId[] = [
-    "about",
-    "projects",
-    "research",
-    "contact",
-    "recycle",
-  ];
   return Object.fromEntries(
-    ids.map((id) => [
+    WINDOW_IDS.map((id) => [
       id,
       { open: false, minimized: false, maximized: false, zIndex: 0 },
     ])
@@ -214,6 +230,8 @@ export function Desktop() {
       {(Object.keys(windows) as WindowId[]).map((id) => {
         const w = windows[id];
         if (!w.open) return null;
+        const size = defaultSizeFor(id);
+        const position = defaultPositionFor(id, size);
         return (
           <WindowFrame
             key={id}
@@ -223,8 +241,8 @@ export function Desktop() {
             focused={id === focusedId}
             minimized={w.minimized}
             maximized={w.maximized}
-            defaultPosition={DEFAULT_POSITIONS[id]}
-            defaultSize={DEFAULT_SIZES[id]}
+            defaultPosition={position}
+            defaultSize={size}
             onFocus={() => focusWindow(id)}
             onClose={() => closeWindow(id)}
             onMinimize={() => minimizeWindow(id)}
