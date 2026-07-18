@@ -3,28 +3,361 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --vista-aero-top: #0a246a;
+  --vista-aero-mid: #3a6ea5;
+  --vista-aero-light: #a8d0f0;
+  --vista-glass: rgba(180, 210, 240, 0.45);
+  --vista-taskbar: linear-gradient(
+    180deg,
+    rgba(180, 210, 245, 0.85) 0%,
+    rgba(60, 110, 180, 0.92) 8%,
+    rgba(30, 70, 140, 0.95) 50%,
+    rgba(20, 50, 110, 0.98) 100%
+  );
+  --vista-window-bg: #f0f0f0;
+  --vista-title: linear-gradient(
+    180deg,
+    #a9c9e8 0%,
+    #6ba3d4 12%,
+    #3a7ec0 45%,
+    #2a6aad 70%,
+    #4a8ec8 100%
+  );
+  --desktop-glow: radial-gradient(
+    ellipse 80% 60% at 50% 35%,
+    rgba(255, 220, 160, 0.55) 0%,
+    rgba(120, 180, 220, 0.25) 40%,
+    transparent 70%
+  );
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Vista aurora wallpaper */
+.vista-wallpaper {
+  background-color: #0c1a2e;
+  background-image:
+    var(--desktop-glow),
+    radial-gradient(ellipse 70% 50% at 20% 80%, rgba(40, 120, 90, 0.7) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 75%, rgba(30, 90, 70, 0.65) 0%, transparent 50%),
+    linear-gradient(
+      180deg,
+      #0a1528 0%,
+      #1a3a5c 18%,
+      #2d6a9a 38%,
+      #5a9bc4 52%,
+      #8ec4a8 68%,
+      #3d7a5a 82%,
+      #1a4030 100%
+    );
+  background-size: cover;
+  background-position: center;
+}
+
+.vista-wallpaper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 90% 40% at 50% 0%,
+    rgba(200, 230, 255, 0.35) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* Soft CRT / LCD scan feel on dial-up only */
+.dialup-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+}
+
+/* Aero glass title bar */
+.aero-titlebar {
+  background: var(--vista-title);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.aero-window {
+  background: rgba(232, 240, 248, 0.92);
+  border: 1px solid rgba(40, 80, 140, 0.55);
+  border-radius: 8px 8px 4px 4px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.aero-window.maximized {
+  border-radius: 0;
+}
+
+.aero-btn {
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, #7eb8e8 0%, #3a7ec0 50%, #2a5a98 100%);
+  color: white;
+  font-size: 11px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.aero-btn:hover {
+  filter: brightness(1.15);
+}
+
+.aero-btn.close {
+  background: linear-gradient(180deg, #e88888 0%, #c03030 50%, #902020 100%);
+  width: 44px;
+}
+
+.aero-btn.close:hover {
+  filter: brightness(1.2);
+}
+
+/* Taskbar */
+.vista-taskbar {
+  background: var(--vista-taskbar);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.start-orb {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #ffffff 0%,
+    #90d050 25%,
+    #40a020 55%,
+    #206010 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 0 12px rgba(80, 200, 60, 0.7),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.start-orb:hover {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+.start-orb:active {
+  transform: scale(0.96);
+}
+
+.taskbar-pill {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(120, 170, 220, 0.45) 40%,
+    rgba(60, 110, 180, 0.55) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.taskbar-pill.active {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(160, 200, 240, 0.65) 40%,
+    rgba(80, 140, 200, 0.75) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.tray-clock {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 225, 250, 0.4) 0%,
+    rgba(80, 130, 190, 0.5) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+}
+
+/* Desktop icons */
+.desktop-icon {
+  width: 76px;
+  padding: 6px 4px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.desktop-icon:hover,
+.desktop-icon.selected {
+  background: rgba(100, 160, 220, 0.35);
+  border-color: rgba(180, 220, 255, 0.55);
+}
+
+.desktop-icon-label {
+  color: white;
+  font-size: 11px;
+  line-height: 1.25;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.6);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+/* Classic inset content panes */
+.vista-inset {
+  background: white;
+  border: 1px solid #7a9cbc;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.vista-toolbar {
+  background: linear-gradient(180deg, #f8fafc 0%, #dce6f0 100%);
+  border-bottom: 1px solid #a8bdd0;
+}
+
+.vista-sidebar {
+  background: linear-gradient(180deg, #e8f0f8 0%, #d0e0f0 100%);
+  border-right: 1px solid #a8bdd0;
+}
+
+/* Progress bar (dial-up / loading) */
+.vista-progress-track {
+  height: 16px;
+  background: #e8e8e8;
+  border: 1px solid #808080;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.vista-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #1a6ab8,
+    #1a6ab8 8px,
+    #3a8ad8 8px,
+    #3a8ad8 16px
+  );
+  background-size: 22px 22px;
+  animation: progress-stripe 0.6s linear infinite;
+}
+
+@keyframes progress-stripe {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 22px 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+@keyframes boot-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.cursor-blink {
+  animation: boot-blink 1s step-end infinite;
+}
+
+@keyframes window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.window-enter {
+  animation: window-open 0.18s ease-out;
+}
+
+/* Start menu */
+.start-menu {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 225, 250, 0.95) 0%,
+    rgba(140, 180, 220, 0.92) 8%,
+    rgba(60, 110, 180, 0.95) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+}
+
+.start-menu-user {
+  background: linear-gradient(90deg, #2a5a98 0%, #4a8ac8 100%);
+}
+
+/* Scrollbars — mild Vista feel */
+.vista-scroll::-webkit-scrollbar {
+  width: 16px;
+}
+.vista-scroll::-webkit-scrollbar-track {
+  background: #e8e8e8;
+  border-left: 1px solid #c0c0c0;
+}
+.vista-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #d0d8e0, #a8b8c8);
+  border: 1px solid #808890;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .desktop-icon {
+    width: 68px;
+  }
+  .aero-window {
+    border-radius: 6px 6px 2px 2px;
   }
 }

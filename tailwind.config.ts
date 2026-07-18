@@ -1,13 +1,5 @@
 import type { Config } from "tailwindcss";
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-
-const colors = require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-
-
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,37 +8,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      animation: {
-        scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite"
+      fontFamily: {
+        vista: ['"Segoe UI"', "Tahoma", "Geneva", "Verdana", "sans-serif"],
+        mono: ['"Consolas"', '"Courier New"', "monospace"],
       },
-      keyframes: {
-        scroll: {
-          to: {
-            transform: "translate(calc(-50% - 0.5rem))"
-          },
+      colors: {
+        vista: {
+          blue: "#3a7ec0",
+          navy: "#0a246a",
+          glass: "#a8d0f0",
+          task: "#1e468c",
         },
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: {
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.4s ease-out",
       },
     },
   },
-  plugins: [
-    require('daisyui'), addVariablesForColors
-  ],
+  plugins: [],
 };
+
 export default config;
-
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
-
-  addBase({
-    ":root": newVars,
-  });
-}
